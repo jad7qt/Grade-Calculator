@@ -39,7 +39,7 @@
   .header-right {
     float: right;
   }
-  
+
   /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
   @media screen and (max-width: 500px) {
     .header a {
@@ -51,3 +51,11 @@
       float: none;
     }
   }
+
+  btn-container {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+  }
+  

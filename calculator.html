@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="calculator.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="calculator.js"></script>
     </head>
     <body>
         <div class="header">
@@ -21,8 +22,8 @@
                     <th scope="col">Weight</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr id="row1">
+            <tbody id="calculatorTable">
+                <!-- <tr id="row1">
                     <th scope="row">1</th>
                     <td>
                         <input>
@@ -57,9 +58,13 @@
                     <td>
                         <input type="number">
                     </td>
-                </tr>
+                </tr> -->
               </tbody>
         </table>
+        <btn-container>
+            <button id="addRowButton" class="btn btn-primary">Add Row</button>
+            <button id="runCalculation" class="btn btn-primary">Calculate</button>
+        </btn-container>
 
         <p></p>
 
