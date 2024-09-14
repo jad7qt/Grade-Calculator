@@ -99,7 +99,23 @@ function calculateGrade() {
             denom = denom + (1 * rowData.weight);
         }
     });
-    const gradeInput = document.getElementById('calcBox');
-    gradeInput.value=sum/denom;
-    // write sum to final grade on page
+
+    // verify a value has been added, throw error if not
+    if(denom == 0){
+        console.log("nothing added, throw error");
+    }else{
+        // write sum to final grade on page
+        const gradeInput = document.getElementById('calcBox');
+        gradeInput.value=sum/denom;
+    }
+}
+
+// Function to reset table
+function reset() {
+    clearTable();
+    const storedData = [{assignmentName: "", gradeReceived: '', weight: ""}, {assignmentName: "", gradeReceived: "", weight: ""}, {assignmentName: "", gradeReceived: "", weight: ""}];
+    storedData.forEach(rowData => {
+        addRow(rowData);
+    });
+    document.getElementById('calcBox').value = '';
 }
