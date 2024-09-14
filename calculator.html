@@ -59,11 +59,22 @@
                         <input type="number">
                     </td>
                 </tr> -->
-              </tbody>
+            </tbody>
+            <tfoot>
+            <tr id="calcRow">
+                <th scope="row">=</th>
+                <td>
+                    <input readonly>
+                </td>
+                <td>
+                    <input type="number" readonly id="calcBox">
+                </td>
+            </tr>
+            </tfoot>
         </table>
         <btn-container>
             <button id="addRowButton" class="btn btn-primary">Add Row</button>
-            <button id="runCalculation" class="btn btn-primary">Calculate</button>
+            <button id="runCalculation" class="btn btn-primary" onclick="calculateGrade()">Calculate</button>
         </btn-container>
 
         <p></p>

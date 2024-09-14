@@ -11,13 +11,9 @@ function saveTableData() {
     const tableData = [];
 
     rows.forEach(row => {
-        console.log(row);
         const assignmentNameInput = row.querySelector('td:nth-child(2) input');
-        console.log(assignmentNameInput); //null
         const gradeReceivedInput = row.querySelector('td:nth-child(3) input');
-        console.log(gradeReceivedInput); // testing
         const weightInput = row.querySelector('td:nth-child(4) input');
-        console.log(weightInput); // 
 
         const rowData = {
             assignmentName: assignmentNameInput ? assignmentNameInput.value || '':'',
@@ -30,7 +26,7 @@ function saveTableData() {
     localStorage.setItem('tableData', JSON.stringify(tableData));
 }
 
-// Function to add a new row
+// Function to add a row
 function addRow(rowData = {}) {
     const table = document.getElementById('calculatorTable');
     const rowCount = table.rows.length + 1;
@@ -49,6 +45,7 @@ function addRow(rowData = {}) {
         <td><input value="${rowData.assignmentName ? rowData.assignmentName || '':''}"></td>
         <td><input type="number" value="${rowData.gradeReceived || ''}"></td>
         <td><input type="number" value="${rowData.weight || ''}"></td>
+        <td> <button id="removeRowButton" class="btn btn-danger" onclick="removeRow(${rowCount})">X</button>
     `;
     }
     table.appendChild(row);
@@ -62,11 +59,47 @@ function addRow(rowData = {}) {
     saveTableData();
 }
 
+// Function to remove row
+function removeRow(i) {
+    document.getElementById(`row${i}`).remove();
+    saveTableData();
+    
+    // clear table data and reload based on local storage
+    clearTable();
+    loadTableData();
+}
+
 // Function to load table data from local storage
 function loadTableData() {
-    const storedData = JSON.parse(localStorage.getItem('tableData')) || [{assignmentName: "Testing", gradeReceived: 10, weight: ""}, {assignmentName: "", gradeReceived: "", weight: ""}, {assignmentName: "", gradeReceived: "", weight: ""}];
+    const storedData = JSON.parse(localStorage.getItem('tableData')) || [{assignmentName: "", gradeReceived: '', weight: ""}, {assignmentName: "", gradeReceived: "", weight: ""}, {assignmentName: "", gradeReceived: "", weight: ""}];
 
     storedData.forEach(rowData => {
         addRow(rowData);
     });
+}
+
+// Function to clear current table
+function clearTable() {
+    const rows = document.querySelectorAll('#calculatorTable tr');
+    rows.forEach(row => {
+        row.remove();
+    });
+}
+
+// Calculate final grade
+function calculateGrade() {
+    const rows = JSON.parse(localStorage.getItem('tableData'));
+
+    // verify both weight and grade entered for each fow
+    sum = 0;
+    denom = 0;
+    rows.forEach(rowData =>{
+        if(rowData.gradeReceived && rowData.weight){
+            sum = sum + (rowData.gradeReceived * rowData.weight);
+            denom = denom + (1 * rowData.weight);
+        }
+    });
+    const gradeInput = document.getElementById('calcBox');
+    gradeInput.value=sum/denom;
+    // write sum to final grade on page
 }
