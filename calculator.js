@@ -11,10 +11,18 @@ function saveTableData() {
     const tableData = [];
 
     rows.forEach(row => {
+        console.log(row);
+        const assignmentNameInput = row.querySelector('td:nth-child(2) input');
+        console.log(assignmentNameInput); //null
+        const gradeReceivedInput = row.querySelector('td:nth-child(3) input');
+        console.log(gradeReceivedInput); // testing
+        const weightInput = row.querySelector('td:nth-child(4) input');
+        console.log(weightInput); // 
+
         const rowData = {
-            assignmentName: row.querySelector('td:nth-child(1) input').value,
-            gradeReceived: row.querySelector('td:nth-child(2) input').value,
-            weight: row.querySelector('td:nth-child(3) input').value
+            assignmentName: assignmentNameInput ? assignmentNameInput.value || '':'',
+            gradeReceived: gradeReceivedInput ? gradeReceivedInput.value || '':'',
+            weight: weightInput ? weightInput.value || '':'',
         };
         tableData.push(rowData);
     });
@@ -31,14 +39,14 @@ function addRow(rowData = {}) {
     if (rowData == {}){
         row.innerHTML = `
         <th scope="row">${rowCount}</th>
-        <td><input value=""></td>
+        <td><input type="text" value=""></input></td>
         <td><input type="number" value=""></td>
         <td><input type="number" value=""></td>
     `;
     }else{
         row.innerHTML = `
         <th scope="row">${rowCount}</th>
-        <td><input value="${rowData.assignmentName || ''}"></td>
+        <td><input value="${rowData.assignmentName ? rowData.assignmentName || '':''}"></td>
         <td><input type="number" value="${rowData.gradeReceived || ''}"></td>
         <td><input type="number" value="${rowData.weight || ''}"></td>
     `;
@@ -56,7 +64,7 @@ function addRow(rowData = {}) {
 
 // Function to load table data from local storage
 function loadTableData() {
-    const storedData = JSON.parse(localStorage.getItem('tableData')) || [{assignmentName: "", gradeReceived: "", weight: ""}, {assignmentName: "", gradeReceived: "", weight: ""}, {assignmentName: "", gradeReceived: "", weight: ""}];
+    const storedData = JSON.parse(localStorage.getItem('tableData')) || [{assignmentName: "Testing", gradeReceived: 10, weight: ""}, {assignmentName: "", gradeReceived: "", weight: ""}, {assignmentName: "", gradeReceived: "", weight: ""}];
 
     storedData.forEach(rowData => {
         addRow(rowData);
