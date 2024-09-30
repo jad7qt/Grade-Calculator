@@ -1,84 +1,125 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="calculator.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="calculator.js"></script>
-    </head>
-    <body>
-        <div class="header">
-            <a href="#default" class="logo">Grade Calculators</a>
-            <div class="header-right">
-            </div>
+<html lang="en">
+<head>
+    <title>Grade & GPA Calculators</title>
+    <link rel="stylesheet" href="calculator.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="calculator.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Grade Calculators</a>
+        <div class="header-right">
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#gradeCalculatorTab">Grade Calculator</a></li>
+        <li><a data-toggle="tab" href="#gpaCalculatorTab">GPA Calculator</a></li>
+    </ul>
+
+    <!--- <h1>Class Grade Calculator</h1>
+    <table class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th scope="col">Assignment Name</th>
+                <th scope="col">Grade Recieved</th>
+                <th scope="col">Weight</th>
+            </tr>
+        </thead>
+        <tbody id="calculatorTable">
+            Grade calculator content HERE
+        </tbody>
+        <tfoot>
+        <tr id="calcRow">
+            <th scope="row">=</th>
+            <td>
+                <input readonly>
+            </td>
+            <td>
+                <input type="number" readonly id="calcBox">
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+    <btn-container>
+        <button id="addRowButton" class="btn btn-primary">Add Row</button>
+        <button id="resetTable" class="btn btn-danger" onclick="reset()">Reset Table</button>
+        <button id="runCalculation" class="btn btn-primary" onclick="calculateGrade()">Calculate</button>
+    </btn-container> -->
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+        <!-- Grade Calculator -->
+        <div id="gradeCalculatorTab" class="tab-pane fade in active">
+            <h1>Class Grade Calculator</h1>
+            <table class="table table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th scope="col">Assignment Name</th>
+                        <th scope="col">Grade Received</th>
+                        <th scope="col">Weight</th>
+                    </tr>
+                </thead>
+                <tbody id="calculatorTable">
+                    <!-- Your rows go here -->
+                </tbody>
+                <tfoot>
+                    <tr id="calcRow">
+                        <th scope="row">=</th>
+                        <td><input readonly></td>
+                        <td><input type="number" readonly id="calcBox"></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <btn-container>
+                <button id="addRowButton" class="btn btn-primary">Add Row</button>
+                <button id="resetTable" class="btn btn-danger" onclick="reset()">Reset Table</button>
+                <button id="runCalculation" class="btn btn-primary" onclick="calculateGrade()">Calculate</button>
+            </btn-container>
         </div>
 
-        <h1>Class Grade Calculator</h1>
-        <table class="table table-hover table-sm">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th scope="col">Assignment Name</th>
-                    <th scope="col">Grade Recieved</th>
-                    <th scope="col">Weight</th>
-                </tr>
-            </thead>
-            <tbody id="calculatorTable">
-                <!-- <tr id="row1">
-                    <th scope="row">1</th>
-                    <td>
-                        <input>
-                    </td>
-                    <td>
-                        <input type="number">
-                    </td>
-                    <td>
-                        <input type="number">
-                    </td>
-                </tr>
-                <tr id="row2">
-                    <th scope="row">2</th>
-                    <td>
-                        <input>
-                    </td>
-                    <td>
-                        <input type="number">
-                    </td>
-                    <td>
-                        <input type="number">
-                    </td>
-                </tr>
-                <tr id="row3">
-                    <th scope="row">3</th>
-                    <td>
-                        <input>
-                    </td>
-                    <td>
-                        <input type="number">
-                    </td>
-                    <td>
-                        <input type="number">
-                    </td>
-                </tr> -->
-            </tbody>
-            <tfoot>
-            <tr id="calcRow">
-                <th scope="row">=</th>
-                <td>
-                    <input readonly>
-                </td>
-                <td>
-                    <input type="number" readonly id="calcBox">
-                </td>
-            </tr>
-            </tfoot>
-        </table>
-        <btn-container>
-            <button id="addRowButton" class="btn btn-primary">Add Row</button>
-            <button id="resetTable" class="btn btn-danger" onclick="reset()">Reset Table</button>
-            <button id="runCalculation" class="btn btn-primary" onclick="calculateGrade()">Calculate</button>
-        </btn-container>
+        <!-- GPA Calculator -->
+        <div id="gpaCalculatorTab" class="tab-pane fade">
+            <h1>GPA Calculator</h1>
+            <table class="table table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th scope="col">Course Name</th>
+                        <th scope="col">Credit Hours</th>
+                        <th scope="col">Grade Received</th>
+                    </tr>
+                </thead>
+                <tbody id="gpaTable">
+                    <!-- Rows for GPA calculation go here -->
+                </tbody>
+                <tfoot>
+                    <tr id="gpaCalcRow">
+                        <th scope="row">=</th>
+                        <td><input readonly></td>
+                        <td><input type="number" readonly id="gpaCalcBox"></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <btn-container>
+                <button id="addGPARowButton" class="btn btn-primary">Add Row</button>
+                <button id="resetGPATable" class="btn btn-danger" onclick="resetGPA()">Reset Table</button>
+                <button id="calculateGPA" class="btn btn-primary" onclick="calculateGPA()">Calculate GPA</button>
+            </btn-container>
+        </div>
+    </div>
 
-        <p></p>
 
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</body>
 </html>
